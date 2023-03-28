@@ -27,7 +27,7 @@
     align-items: center;
     padding: 20px 20px;
     margin-top: 20px;
-    background-color: rgb(232, 220, 220);
+    background-color: rgb(255, 255, 255);
     border-radius: 20px;
   }
   
@@ -69,4 +69,7 @@
     form{
       width: 300px;
     }
+  }
+  #output-container {
+    margin-top: 20px;
   }
