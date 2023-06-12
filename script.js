@@ -1,30 +1,41 @@
-function generateQRCode(data) {
+function generateQRCode(data_input) {
+  document.getElementById('textbox').style.display = 'none';
+  document.getElementById('textbox1').style.display = 'none';
+  document.getElementById('barcode').src = '';
+
   const imgbox = document.getElementById('imgbox');
-  const data_input = document.getElementById('data_input');
-  imgbox.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + data_input.value;
+  imgbox.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + data_input;
 }
 
 function generateBarcode(data_input) {
+  document.getElementById('textbox').style.display = 'none';
+  document.getElementById('textbox1').style.display = 'none';
+  document.getElementById('imgbox').src = '';
+
   JsBarcode("#barcode", data_input, {
     format: 'code128',
     displayValue: true,
   });
 }
 
-function encryptData(data) {
-  var encodedstring;
-  var basestring = document.getElementById('data_input').value;
-  encodedstring = window.btoa(basestring);
+function encryptData(data_input) {
+  document.getElementById('imgbox').src = '';
+  document.getElementById('barcode').src = '';
+
+  var encodedstring = window.btoa(data_input);
   document.getElementById('textbox').value = encodedstring;
   document.getElementById('textbox').style.display = 'block';
+  document.getElementById('textbox1').style.display = 'none';
 }
 
-function decryptData(data) {
-  var decodedstring;
-  var upstring = document.getElementById('data_input').value;
-  decodedstring = window.atob(upstring);
+function decryptData(data_input) {
+  document.getElementById('imgbox').src = '';
+  document.getElementById('barcode').src = '';
+
+  var decodedstring = window.atob(data_input);
   document.getElementById('textbox1').value = decodedstring;
   document.getElementById('textbox1').style.display = 'block';
+  document.getElementById('textbox').style.display = 'none';
 }
 
 function generateData() {
